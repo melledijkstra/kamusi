@@ -29,7 +29,7 @@ export default class InputForm extends React.Component {
             >
                 <Form.Item>
                     <Input.Search
-                        placeholder="English / Kiswahili"
+                        placeholder="Swahili"
                         onChange={this.props.onChange}
                         size='large'
                         enterButton

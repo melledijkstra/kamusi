@@ -2,6 +2,8 @@
 
 A dictionary application for the (Ki)Swahili language.
 
+![Demo Example](./demo.png)
+
 _This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)._
 
 ## Available Scripts

@@ -1,13 +1,13 @@
 import React from 'react'
-import { Card, Row, Col, Typography } from 'antd';
-import { SoundOutlined, EllipsisOutlined, CopyOutlined } from '@ant-design/icons';
+import { Card, Row, Col, Typography, notification, Badge, Tag } from 'antd';
+import { SoundOutlined, CopyOutlined } from '@ant-design/icons';
 
 export default class LexemInfo extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props.lexem)
         this.playSound = this.playSound.bind(this)
+        this.copyTranslation = this.copyTranslation.bind(this)
     }
 
     render() {
@@ -16,10 +16,10 @@ export default class LexemInfo extends React.Component {
         return (
             <div>
                 <Typography.Title level={2}>
-                    {lexem.word}<br />
-                    <small>{lexem.translations.join(', ')}</small>
+                    {lexem.word} <Tag color="volcano">{lexem.exercise}</Tag>
                 </Typography.Title>
-                <Row>
+                <Typography.Title level={3} style={{ marginTop: '5px', marginBottom: '50px' }}>{lexem.translations.join(', ')}</Typography.Title>
+                <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
                     {lexem.phrases.map((phrase, id) => {
                         return this.renderPhrase(id, phrase)
                     })}
@@ -30,18 +30,25 @@ export default class LexemInfo extends React.Component {
 
     renderPhrase(id, phrase) {
         return (
-            <Col>
+            <Col key={id}>
                 <Card
-                    key={id}
-                    style={{ width: 300 }}
-                    size="default"
+                    style={{ minWidth: '200px' }}
+                    size="small"
                     title={phrase.text}
+                    hoverable
                     actions={[
-                        <CopyOutlined key="copy" onClick={this.copyTranslation.bind(this)} />,
-                        (!phrase.tss ? <SoundOutlined key="listen" onClick={() => {this.playSound(phrase.tts)}} /> : ''),
+                        <CopyOutlined key="copy" onClick={() => this.copyTranslation(phrase.translation_text)} />,
+                        <SoundOutlined
+                            key="listen"
+                            onClick={() => { this.playSound(phrase.tts) }}
+                            hidden={!phrase.tts}
+                            twoToneColor="#eb2f96"
+                        />,
                     ]}
                 >
-                    <p>{phrase.translationText}</p>
+                    <p>{phrase.translation_text}</p>
+                    <p>{phrase.exercise}</p>
+                    <p>{phrase.lexem_id}</p>
                 </Card>
             </Col>
         )
@@ -52,8 +59,17 @@ export default class LexemInfo extends React.Component {
         audio.play()
     }
 
-    copyTranslation() {
-        alert('Translation copied!')
+    copyTranslation(text) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        notification.open({
+            message: 'Translation copied!',
+            description: text
+        })
     }
 
 }
