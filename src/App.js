@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import 'antd/dist/antd.css'
+import './App.css'
+import { Layout, Typography, Empty, } from 'antd'
+import db from './db/dexie'
+import InputForm from './InputForm'
+import LexemInfo from './LexemInfo'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+let dict = require('./db/swahili-by-word.json')
+console.log(dict)
+
+
+
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTerm: 'babu',
+      dictionary: dict
+    }
+  }
+
+  termExists(searchTerm) {
+    this.setState({
+      termExists: searchTerm in this.state.dictionary
+    })
+  }
+
+  render() {
+
+    let lexem = this.state.dictionary[this.state.searchTerm]
+
+    return (
+      <Layout style={{padding: '20px'}}>
+        <Layout.Content style={{ margin: '10vh auto 50px auto' }}>
+          <Typography.Title>Kamusi ya Kiswahili</Typography.Title>
+          <InputForm onChange={this.inputChange.bind(this)} />
+          <p>{this.state.termExists ? 'Yes' : 'No'}</p>
+        </Layout.Content>
+        <div style={{ backgroundColor: 'white' }}>
+          {this.state.termExists ? <LexemInfo lexem={lexem} /> : <Empty />}
+        </div>
+      </Layout>
+    )
+  }
+
+  inputChange(event) {
+    let searchTerm = event.target.value
+    this.setState({ searchTerm })
+    this.termExists(searchTerm)
+  }
+
 }
 
 export default App;
