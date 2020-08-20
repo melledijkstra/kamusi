@@ -33,7 +33,7 @@ export default class InputForm extends React.Component {
                         onChange={this.props.onChange}
                         size='large'
                         enterButton
-                        style={{width: '1000px'}}
+                        style={{width: '100%'}}
                     />
                 </Form.Item>
             </Form>

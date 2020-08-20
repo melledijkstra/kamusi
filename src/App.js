@@ -37,7 +37,6 @@ class App extends Component {
         <Layout.Content style={{ margin: '10vh auto 50px auto' }}>
           <Typography.Title>Kamusi ya Kiswahili</Typography.Title>
           <InputForm onChange={this.inputChange.bind(this)} />
-          <p>{this.state.termExists ? 'Yes' : 'No'}</p>
         </Layout.Content>
         <div style={{ backgroundColor: 'white' }}>
           {this.state.termExists ? <LexemInfo lexem={lexem} /> : <Empty />}

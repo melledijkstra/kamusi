@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Typography } from 'antd';
 import { SoundOutlined, EllipsisOutlined, CopyOutlined } from '@ant-design/icons';
 
 export default class LexemInfo extends React.Component {
@@ -15,6 +15,10 @@ export default class LexemInfo extends React.Component {
 
         return (
             <div>
+                <Typography.Title level={2}>
+                    {lexem.word}<br />
+                    <small>{lexem.translations.join(', ')}</small>
+                </Typography.Title>
                 <Row>
                     {lexem.phrases.map((phrase, id) => {
                         return this.renderPhrase(id, phrase)
