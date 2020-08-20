@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/kamusi/static/css/main.d4d0d634.chunk.css",
+    "main.js": "/kamusi/static/js/main.fc0c7228.chunk.js",
+    "main.js.map": "/kamusi/static/js/main.fc0c7228.chunk.js.map",
+    "runtime-main.js": "/kamusi/static/js/runtime-main.8414f68e.js",
+    "runtime-main.js.map": "/kamusi/static/js/runtime-main.8414f68e.js.map",
+    "static/css/2.04ff9426.chunk.css": "/kamusi/static/css/2.04ff9426.chunk.css",
+    "static/js/2.b374fd3d.chunk.js": "/kamusi/static/js/2.b374fd3d.chunk.js",
+    "static/js/2.b374fd3d.chunk.js.map": "/kamusi/static/js/2.b374fd3d.chunk.js.map",
+    "index.html": "/kamusi/index.html",
+    "precache-manifest.7da0f0854a74d974320d72d2d6fe1144.js": "/kamusi/precache-manifest.7da0f0854a74d974320d72d2d6fe1144.js",
+    "service-worker.js": "/kamusi/service-worker.js",
+    "static/css/2.04ff9426.chunk.css.map": "/kamusi/static/css/2.04ff9426.chunk.css.map",
+    "static/css/main.d4d0d634.chunk.css.map": "/kamusi/static/css/main.d4d0d634.chunk.css.map",
+    "static/js/2.b374fd3d.chunk.js.LICENSE.txt": "/kamusi/static/js/2.b374fd3d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8414f68e.js",
+    "static/css/2.04ff9426.chunk.css",
+    "static/js/2.b374fd3d.chunk.js",
+    "static/css/main.d4d0d634.chunk.css",
+    "static/js/main.fc0c7228.chunk.js"
+  ]
+}
